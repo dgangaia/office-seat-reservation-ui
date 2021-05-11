@@ -1,0 +1,140 @@
+<section class="content-header">
+        <h1>
+          Schedule Leaves
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active">Dashboard</li>
+        </ol>
+      </section>
+    
+      <section class="content" style="height: auto !important; min-height: 0px !important;">
+          <!-- Small boxes (Stat box) -->
+          <div class="row ">
+              <div class="col-md-12 col-xs-6">
+                  <div class="box box-danger">
+                    <div class="box-header">
+                      <h3 class="box-title">Pick leave dates</h3>
+                    </div>
+                    <div class="box-body">
+                      <!-- Date -->
+                      <div class="form-group pull-centre" >
+                          <label>Select your name:</label>
+                          <div class="input-group date">
+                            <div class="input-group-addon">
+                              <i class="fa fa-user"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="datepicker">
+                          </div>
+                        <label>Date:</label>
+        
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="datepicker">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                      <!-- /.form group -->
+        
+    
+    
+    
+    
+                      <div class="col-md-6 col-xs-6">
+                          <div class="box box-danger">
+                            <div class="box-header">
+                              <h3 class="box-title">Schedule leave dates</h3>
+                            </div>
+                              <div class="box-body">
+    
+                                  <div class=" pull-centre" >
+                                      <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()">
+                                        <label>Select your user name from drop down: <i class="fa fa-user"></i></label>
+                                        <div class="input-group date">
+    
+                                          <select formControlName="username">
+                                              <option *ngFor="let users of userslist" [ngValue]="userselected">
+                                                {{ users.name }}
+                                              </option>
+                                          </select>
+                                        </div>
+                                        <hr>
+    
+                                        <div class="input-group date">
+                                            <label>Pick leave start date: 
+                                                <i class="fa fa-calendar"></i>
+                                            <input type="date" class="form-control pull-right" formControlName="startdate">
+                                          </label> 
+                                        </div>
+    
+                                        <div class="input-group date">
+                                            <label>Pick leave end date:  
+                                                <i class="fa fa-calendar"></i>
+                                            <input type="date" class="form-control pull-right" formControlName="enddate">
+                                          </label> 
+                                        </div>
+    
+                                        <button type="submit" [disabled]="!scheduleForm.valid">Submit</button>
+                                    </form>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                        
+    
+    
+                        <p>Example of the range selection</p>
+    
+                        <ngb-datepicker #dp (dateSelect)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t" outsideDays="hidden">
+                        </ngb-datepicker>
+                    
+                        <ng-template #t let-date let-focused="focused">
+                          <span class="custom-day"
+                                [class.focused]="focused"
+                                [class.range]="isRange(date)"
+                                [class.faded]="isHovered(date) || isInside(date)"
+                                (mouseenter)="hoveredDate = date"
+                                (mouseleave)="hoveredDate = null">
+                            {{ date.day }}
+                          </span>
+                        </ng-template>
+                        
+                        <hr>
+                        
+                        <pre>From: {{ fromDate | json }} </pre>
+                        <pre>To: {{ toDate | json }} </pre>
+    
+    
+                        <div class="seat-row">
+                            <div  *ngFor ="let seat of seatinfo; let i = index">
+                                  <div *ngIf="i > 2" [ngClass]="seat.bookingstatus === 'booked'" class="seat" [ngClass] ="seat.bookingstatus === 'booked'? 'divide-category': ''"> 
+                                   <label class="seat-label" [ngClass] ="'bg-red'"> {{seat.seatno}} <br> {{seat.allocateduser}}</label>
+                                  </div>
+                 
+                                  <div *ngIf="seat.bookingstatus === 'Available'" class="seat" [ngClass] ="seat.bookingstatus === 'Available'? 'divide-category': ''"> 
+                                      <label class="seat-label" [ngClass] ="'bg-green'"> {{seat.seatno}} <br> {{seat.allocateduser}}</label>
+                                  </div> 
+                          </div>
+    
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+        
+    
+    
+    
+                  </div>
+                  </div>
+          </div>
+    
+    
+    
+    
+     
+      </section>
+               
+    
+    

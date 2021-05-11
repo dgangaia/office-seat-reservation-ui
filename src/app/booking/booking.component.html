@@ -1,0 +1,110 @@
+<section class="content-header">
+    <h1>
+      Schedule Leaves
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Dashboard</li>
+    </ol>
+  </section>
+
+  <section class="content" style="height: auto !important; min-height: 0px !important;">
+      <!-- Small boxes (Stat box) -->
+      <div class="row ">
+          <div class="col-md-12 col-md-12">
+              <div class="box box-danger">
+                  <div class="box-header">
+                    <h3 class="box-title">Schedule leave dates</h3>
+                  </div>
+                  <div class="box-body">
+                      <div class="vertical-align: middle" >
+                          <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()">
+                                <label>Select your name from drop down: <i class="fa fa-user"></i> </label>
+                                <div class="input-group opt">
+                                    <select formControlName="seatownedby">
+                                        <option [ngValue]="null" selected></option>
+                                        <option *ngFor="let users of userslist" >
+                                          {{ users.seatownedby }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div class="input-group date">
+                                    <label>Select leave or WFH start date: 
+                                        <i class="fa fa-calendar"></i>
+                                    <input type="date" class="form-control pull-right" formControlName="leavestartdate">
+                                  </label> 
+                                </div>
+                                <br>
+                                <div class="input-group date">
+                                    <label>Select leave or WFH end date:  
+                                        <i class="fa fa-calendar"></i>
+                                    <input type="date" class="form-control pull-right" formControlName="leaveenddate">
+                                  </label> 
+                                </div>
+                                <br>
+                                    <button type="submit" class="btn btn-danger" [disabled]="!scheduleForm.valid">Submit</button>
+                            </form>
+                            <br>
+
+                            <div>
+                                <div *ngIf="showMsg">
+                                        <label>Successful, Thanks for updating <i class="fa fa-thumbs-o-up"></i> </label>
+                            </div>
+                           </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+
+      <br>
+
+      <div class="row ">
+            <div class="col-md-12 col-md-12">
+                <div class="box box-success">
+                    <div class="box-header">
+                      <h3 class="box-title">Seat Reservation</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="vertical-align: middle" >
+                            <form [formGroup]="bookingForm" (ngSubmit)="onbookingSubmit()">
+                                  <label>Select available seats from dropdown:  <i class="fa fa-users"></i> </label>
+                                  <div class="input-group opt">
+                                      <select formControlName="seatownedby">
+                                          <option [ngValue]="null" selected></option>
+                                          <option *ngFor="let users of availblelist" >
+                                                {{ users.seatownedby }}
+                                          </option>
+                                      </select>
+                                  </div>
+                                  <br>
+                                  <div class="input-group text">
+                                      <label>Enter your name: 
+                                          <i class="fa fa-user"></i>
+                                      <input type="text" class="form-control pull-right" formControlName="seatbookedby">
+                                    </label> 
+                                  </div>
+                                  <br>
+                                      <button type="submit" class="btn btn-success" [disabled]="!bookingForm.valid">Submit</button>
+                              </form>
+                              <br>
+
+                              <div>
+
+                                  <div *ngIf="showbookingMsg">
+                                        <label>Seat was successfully booked, Please refresh the page, Have a nice day <i class="fa fa-sun-o"></i> </label>
+                              </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>     
+
+
+  </section>
+           
+

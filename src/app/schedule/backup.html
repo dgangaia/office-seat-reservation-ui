@@ -1,0 +1,97 @@
+<section class="content-header">
+        <h1>
+          Seat Selection
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active">Dashboard</li>
+        </ol>
+      </section>
+    
+      <section class="content" style="height: auto !important; min-height: 0px !important;">
+          <div class="row">
+                <div class="col-xs-12">
+                  <div class="box box-solid">
+                    <div class="box-header">
+                      <i class="fa fa-bar-chart-o"></i>
+        
+                      <h3 class="box-title">Avalible seats </h3>
+        
+                      <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body col-xs-12">
+                      <div class="row">
+    
+                          <div  *ngFor ="let seat of seatinfo; let i = index">
+                           
+                            
+                                <div *ngIf="i < 3" class="seat" [ngClass] = "seat.bookingstatus === 'booked'? 'divide-category': ''"> 
+                                 <label class="seat-label" [ngClass] ="'bg-red'"> {{seat.seatno}} <br> {{seat.allocateduser}}</label>
+                                </div>
+               
+                                <div *ngIf="i < 3 " class="seat" [ngClass] = "seat.bookingstatus === 'Available'? 'divide-category': ''"> 
+                                    <label class="seat-label" [ngClass] ="'bg-green'"> {{seat.seatno}} <br> {{seat.allocateduser}}</label>
+                                </div> 
+                        </div>
+    
+    
+                        <div class="seat-row">
+                            <div  *ngFor ="let seat of seatinfo; let i = index">
+                                  <div *ngIf="i > 2" [ngClass]="seat.bookingstatus === 'booked'" class="seat" [ngClass] ="seat.bookingstatus === 'booked'? 'divide-category': ''"> 
+                                   <label class="seat-label" [ngClass] ="'bg-red'"> {{seat.seatno}} <br> {{seat.allocateduser}}</label>
+                                  </div>
+                 
+                                  <div *ngIf="seat.bookingstatus === 'Available'" class="seat" [ngClass] ="seat.bookingstatus === 'Available'? 'divide-category': ''"> 
+                                      <label class="seat-label" [ngClass] ="'bg-green'"> {{seat.seatno}} <br> {{seat.allocateduser}}</label>
+                                  </div> 
+                          </div>
+    
+    
+    
+                          </div>
+    
+    
+    
+                        <div class="seat-row">
+                          <div *ngFor="let seat of seatinfo;let i = index">
+                            <div *ngIf="i < 3" class="seat-row">
+    
+                                <div *ngIf="i % 3 == 0"> {{seat.seatno}}</div> 
+                              <label class="seat-label" [ngClass] ="'bg-green'"> {{seat.seatno}} <br> {{seat.allocateduser}}</label>
+                            </div>
+                          </div>
+    
+                        </div>
+    
+    
+                        <div *ngFor="let item of counter(10); let i = index">
+                            <div *ngIf="i % 5 == 0" class="row">
+                              {{ seat.bookedby }}
+                              <div *ngIf="i + 1 < seatinfo.length">{{ seatinfo.seatno[i + 1] }}</div>
+                              <div *ngIf="i + 2 < seatinfo.length">{{ seatinfo[i + 2] }}</div>
+                              <div *ngIf="i + 3 < seatinfo.length">{{ seatinfo[i + 3] }}</div>
+                              <div *ngIf="i + 4 < seatinfo.length">{{ seatinfo[i + 4] }}</div>
+                            </div>
+                          </div>
+    
+    
+                  
+                              
+    
+                    </div>
+    
+                  </div>
+    
+          </div>
+    
+    </div>
+    </div>
+    </section>
+    
+    

@@ -2,9 +2,21 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
 
+#UI preview
+![alt text](./images/2.png)
+![alt text](./images/3.png)
+![alt text](./images/1.png)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+# Docker images for UI and backend
+docker run -p 27017:27017 -v /melbourne/data/:data/db --net=host mongo -d mongo
+
+docker run -p 8080:8080  --net=host -d quay.io/dgangaia/melbournebackend:v5
+
+ docker run -p 80:80 --net=host -d quay.io/dgangaia/melbourneui:v6
 
 ## Code scaffolding
 

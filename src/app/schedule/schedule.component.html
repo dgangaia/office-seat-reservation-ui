@@ -1,0 +1,96 @@
+<section class="content-header">
+    <h1>
+      Seat Matrix
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Dashboard</li>
+    </ol>
+  </section>
+
+
+
+  <section class="content px-2" style="height: auto !important; min-height: 0px !important;">
+
+
+        <div class="row ">
+                <div class="col-md-12 col-md-12">
+                    <div class="box box-danger">
+                        <div class="box-header">
+                          <h2 class="box-title" class="align:auto">Floor 24 Layout</h2>
+                        </div>
+                        <div class="box-body">
+                            <div class="vertical-align: middle" >
+
+
+
+
+
+        <div *ngFor="let t of temp(math.ceil(seatinfo.length/13)).fill(); let i = index" class="seat-row">
+            <div *ngFor="let seat of seatinfo.slice(13*i,13*i + 13);" >
+           
+                      <div class="seat">
+                            <div [ngSwitch]="seat.bookingstatus">
+                                    <div *ngSwitchCase="'booked'" data-toggle="tooltip" data-placement="top" title="Bookedby: {{seat.seatbookedby}}
+LeaveStartDate: {{seat.leavestartdate}}
+LeaveEndDate: {{seat.leaveenddate}}
+BookingStatus: {{seat.bookingstatus}}">
+                                           
+                                        <label class="seat-label" 
+                                            [ngClass] ="'bg-primary'"> {{seat.seatno}} <br> {{seat.seatownedby}}</label>
+                                    </div>   
+                                    <div *ngSwitchCase="'Available'" data-toggle="tooltip" data-placement="top" title="LeaveStartDate: {{seat.leavestartdate}}
+LeaveEndDate: {{seat.leaveenddate}}
+BookingStatus: {{seat.bookingstatus}}">
+                                        <label class="seat-label" 
+                                            [ngClass] ="'bg-green'"> {{seat.seatno}} <br> {{seat.seatownedby}}</label>
+                                    </div> 
+                                    <div *ngSwitchCase="'notavailable'"data-toggle="tooltip" data-placement="top" title="BookingStatus: {{seat.bookingstatus}}">
+                                        <label class="seat-label" 
+                                            [ngClass] ="'bg-red'"> {{seat.seatno}} <br> {{seat.seatownedby}}</label>
+                                    </div>
+                                </div>
+                            </div>
+              
+            </div>
+          </div>
+  
+
+        <!-- <div class="row">
+                <div class="seat-row" *ngFor ="let seat of seatinfo; let i = index" [attr.data-index]="3">
+               
+                    <div [ngSwitch]="seat.bookingstatus">
+                        <div *ngSwitchCase="'booked'" data-toggle="tooltip" data-placement="top" title="Bookedby: {{seat.seatbookedby}},
+LeaveStartDate: {{seat.leavestartdate}},
+LeaveEndDate: {{seat.leaveenddate}},
+BookingStatus: {{seat.bookingstatus}}">
+                               
+                            <label class="seat-label" 
+                                [ngClass] ="'bg-primary'"> {{seat.seatno}} <br> {{seat.seatownedby}}</label>
+                        </div>   
+                        <div *ngSwitchCase="'Available'" data-toggle="tooltip" data-placement="top" title="LeaveStartDate: {{seat.leavestartdate}},
+LeaveEndDate: {{seat.leaveenddate}},
+BookingStatus: {{seat.bookingstatus}}">
+                            <label class="seat-label" 
+                                [ngClass] ="'bg-green'"> {{seat.seatno}} <br> {{seat.seatownedby}}</label>
+                        </div> 
+                        <div *ngSwitchCase="'notavailable'"data-toggle="tooltip" data-placement="top" title="BookingStatus: {{seat.bookingstatus}}">
+                            <label class="seat-label" 
+                                [ngClass] ="'bg-red'"> {{seat.seatno}} <br> {{seat.seatownedby}}</label>
+                        </div>
+                    </div>
+            
+                </div>
+
+                  </div> -->
+             
+
+                  </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+

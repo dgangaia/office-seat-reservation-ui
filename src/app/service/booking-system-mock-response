@@ -1,0 +1,12 @@
+{
+    "seats"":[
+        {
+            "seatNo": 1,
+            "bookedBy": "Paul",
+        },
+        {
+            "seatNo": 1,
+            "bookedBy": "Paul",
+        },
+    ]
+}
